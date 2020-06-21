@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        /*将post method 改变为delete*/
+        $(function () {
+            $(".delete").click(function () {
+                var href = $(this).attr("href");
+                $("#form_delete").attr("action", href).submit();
+                return false;
+            })
+        })
+    </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>restful用户管理</title>
+</head>
+<body>
+<div>
+    <h2>restful用户管理</h2>
+
+    <table>
+        <thead>
+        <tr>
+            <td>id</td>
+            <td>name</td>
+            <td>编辑</td>
+            <td>删除</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="u: ${us}">
+            <td th:text="${u.id}"></td>
+            <td th:text="${u.name}"></td>
+            <td><a th:href="@{user/} + ${u.id}">编辑</a></td>
+            <td><a class="delete" th:href="@{user/} + ${u.id}">删除</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <br/>
+    <form action="/user" method="post">
+        name: <input name="name"/> <br/>
+        <button type="submit">新增用户</button>
+    </form>
+
+    <!--删除操作-->
+    <form id="form_delete" action="" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+    </form>
+</div>
+</body>
+</html>

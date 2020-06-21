@@ -1,16 +1,19 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>用户维护</title>
+    <title>restful维护用户</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+<h2>restful维护用户</h2>
 <div style="margin:0px auto; width:500px">
 
-    <form action="/updateUser" method="post">
+    <form action="@{user/}" method="post">
+        <input type="hidden" name="_method" th:value="put" >
 
-        id: <input name="id" readonly th:value="${c.id}"/> <br/>
+        id: <input name="id" readonly th:value="${c.id}"/><br/>
         name: <input name="name" th:value="${c.name}"/> <br/>
+
         <button type="submit">修改用户</button>
 
     </form>

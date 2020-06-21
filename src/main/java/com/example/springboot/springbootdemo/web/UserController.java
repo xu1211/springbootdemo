@@ -13,12 +13,6 @@ import java.util.List;
 @Controller
 public class UserController {
 
-    @RequestMapping("/hellothymeleaf")
-    public String hello(Model m) {
-        m.addAttribute("name", "thymeleaf");
-        return "thymeleaf";
-    }
-
     @Autowired
     UserMapper userMapper;
 
@@ -30,7 +24,7 @@ public class UserController {
     }
 
     @RequestMapping("/addUser")
-    public String listUser(User c) throws Exception {
+    public String addUser(User c) throws Exception {
         userMapper.save(c);
         return "redirect:listUser";
     }
@@ -48,8 +42,9 @@ public class UserController {
     }
 
     @RequestMapping("/editUser")
-    public String listUser(int id, Model m) throws Exception {
+    public String editUser(int id, Model m) throws Exception {
         User c = userMapper.get(id);
+        System.out.println(c.toString());
         m.addAttribute("c", c);
         return "editUser";
     }

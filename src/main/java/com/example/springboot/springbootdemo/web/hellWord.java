@@ -1,5 +1,6 @@
 package com.example.springboot.springbootdemo.web;
 
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,4 +17,9 @@ public class hellWord {
         return "Hello Spring Boot!";
     }
 
+    @RequestMapping("/hellothymeleaf")
+    public String hello(Model m) {
+        m.addAttribute("name", "thymeleaf");
+        return "thymeleaf";
+    }
 }
