@@ -9,6 +9,7 @@
         $(function () {
             $(".delete").click(function () {
                 var href = $(this).attr("href");
+                alert(href);
                 $("#form_delete").attr("action", href).submit();
                 return false;
             })

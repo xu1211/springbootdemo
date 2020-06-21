@@ -1,7 +1,7 @@
 # springBoot_demo
  springboot练习项目
  
-内容：springboot基本使用，用户增删改查，热部署，thymeleaf
+内容：springboot基本使用,用户增删改查,热部署,thymeleaf,resful风格,redis
 
 - 数据库 MySQL
 - 表

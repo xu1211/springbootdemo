@@ -24,9 +24,17 @@ public class RESTUserController {
         return "RESTlistUser";
     }
 
+    @GetMapping("/user/{id}")
+    public String editUser(@PathVariable("id") int id, Model m) throws Exception {
+        System.out.println("查询单个用户" + id);
+        User c = userMapper.get(id);
+        m.addAttribute("c", c);
+        return "RESTeditUser";
+    }
+
     @PostMapping("/user")
     public String addUser(User c) throws Exception {
-        System.out.println("保存用户" + c);
+        System.out.println("新增用户" + c);
         userMapper.save(c);
         return "redirect:user";
     }
@@ -35,21 +43,13 @@ public class RESTUserController {
     public String deleteUser(User c) throws Exception {
         System.out.println("删除用户" + c);
         userMapper.delete(c.getId());
-        return "redirect:user";
+        return "redirect:/user";
     }
 
-    @PutMapping("/user/{id}")
+    @PutMapping("/user")
     public String updateUser(User c) throws Exception {
         System.out.println("修改用户" + c);
         userMapper.update(c);
         return "redirect:user";
-    }
-
-    @GetMapping("/user/{id}")
-    public String editUser(@PathVariable("id") int id, Model m) throws Exception {
-        System.out.println("查询单个用户" + id);
-        User c = userMapper.get(id);
-        m.addAttribute("c", c);
-        return "RESTeditUser";
     }
 }

@@ -8,8 +8,8 @@
 <h2>restful维护用户</h2>
 <div style="margin:0px auto; width:500px">
 
-    <form action="@{user/}" method="post">
-        <input type="hidden" name="_method" th:value="put" >
+    <form action="/user" method="post">
+        <input type="hidden" name="_method" value="PUT" >
 
         id: <input name="id" readonly th:value="${c.id}"/><br/>
         name: <input name="name" th:value="${c.name}"/> <br/>
