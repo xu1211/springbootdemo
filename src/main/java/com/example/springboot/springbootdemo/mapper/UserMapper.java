@@ -18,7 +18,7 @@ public interface UserMapper {
     public int save(User user);
 
     @Delete(" delete from User where id= #{id} ")
-    public void delete(int id);
+    public int delete(int id);
 
     @Update("update User set name=#{name} where id=#{id} ")
     public int update(User user);

@@ -18,12 +18,9 @@ public class RedisController {
     private RedisUtil redisUtil;
 
     @RequestMapping("set")
-    public boolean redisset(String key, String value) {
-        User User = new User();
-        User.setId(1);
-        User.setName("test");
-
-        return redisUtil.set("1", User.getName());
+    public Object redisset(String key, String value) {
+        redisUtil.set(key, value);
+        return redisUtil.get(key);
     }
 
     @RequestMapping("get")
